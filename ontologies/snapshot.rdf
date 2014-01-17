@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:measurement="http://reedcourty.github.com/ontologies/measurement#"
+    xmlns="http://reedcourty.github.com/ontologies/snapshot#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:tags="http://reedcourty.github.com/ontologies/tags#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:virtualization="http://reedcourty.github.com/ontologies/virtualization#"
+  xml:base="http://reedcourty.github.com/ontologies/snapshot">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/measurement"/>
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/tags"/>
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/virtualization"/>
+  </owl:Ontology>
+  <owl:DatatypeProperty rdf:ID="fieldNameInDB">
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <rdf:Description rdf:about="http://reedcourty.github.com/ontologies/virtualization#Machine">
+    <fieldNameInDB rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >item_id</fieldNameInDB>
+  </rdf:Description>
+  <tags:Tag rdf:ID="MeasurementSource">
+    <tags:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Measurement Source</tags:hasName>
+    <tags:tagging>
+      <virtualization:Guest rdf:ID="ugluk">
+        <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</virtualization:isVirtual>
+        <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >ugluk</virtualization:name>
+      </virtualization:Guest>
+    </tags:tagging>
+    <tags:tagging>
+      <virtualization:Guest rdf:ID="telchar">
+        <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >telchar</virtualization:name>
+        <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</virtualization:isVirtual>
+        <virtualization:runningBy>
+          <virtualization:Host rdf:ID="beren">
+            <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >false</virtualization:isVirtual>
+            <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >beren.mit.bme.hu</virtualization:name>
+            <virtualization:runs rdf:resource="#ugluk"/>
+            <virtualization:runs rdf:resource="#telchar"/>
+            <virtualization:runs>
+              <virtualization:Guest rdf:ID="shelob">
+                <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >shelob</virtualization:name>
+                <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >true</virtualization:isVirtual>
+                <virtualization:runningBy rdf:resource="#beren"/>
+              </virtualization:Guest>
+            </virtualization:runs>
+            <virtualization:runs>
+              <virtualization:Guest rdf:ID="gloin">
+                <virtualization:runningBy rdf:resource="#beren"/>
+                <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >true</virtualization:isVirtual>
+                <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >gloin</virtualization:name>
+              </virtualization:Guest>
+            </virtualization:runs>
+          </virtualization:Host>
+        </virtualization:runningBy>
+      </virtualization:Guest>
+    </tags:tagging>
+    <tags:tagging>
+      <virtualization:Guest rdf:ID="filgolfin">
+        <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >filgolfin</virtualization:name>
+        <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</virtualization:isVirtual>
+        <virtualization:runningBy>
+          <virtualization:Host rdf:ID="luthien">
+            <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >false</virtualization:isVirtual>
+            <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >luthien.mit.bme.hu</virtualization:name>
+            <virtualization:runs>
+              <virtualization:Guest rdf:ID="turgon">
+                <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >turgon</virtualization:name>
+                <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >true</virtualization:isVirtual>
+                <virtualization:runningBy rdf:resource="#luthien"/>
+              </virtualization:Guest>
+            </virtualization:runs>
+            <virtualization:runs>
+              <virtualization:Guest rdf:ID="melian">
+                <virtualization:runningBy rdf:resource="#luthien"/>
+                <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >true</virtualization:isVirtual>
+                <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >melian</virtualization:name>
+              </virtualization:Guest>
+            </virtualization:runs>
+            <virtualization:runs>
+              <virtualization:Guest rdf:ID="glaurung">
+                <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >glaurung</virtualization:name>
+                <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >true</virtualization:isVirtual>
+                <virtualization:runningBy rdf:resource="#luthien"/>
+              </virtualization:Guest>
+            </virtualization:runs>
+            <virtualization:runs rdf:resource="#filgolfin"/>
+            <virtualization:runs>
+              <virtualization:Guest rdf:ID="balrog">
+                <virtualization:name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >balrog</virtualization:name>
+                <virtualization:isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+                >true</virtualization:isVirtual>
+                <virtualization:runningBy rdf:resource="#luthien"/>
+              </virtualization:Guest>
+            </virtualization:runs>
+          </virtualization:Host>
+        </virtualization:runningBy>
+      </virtualization:Guest>
+    </tags:tagging>
+    <tags:tagging rdf:resource="#turgon"/>
+    <tags:hasComment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The tagged item is a data of measurement source</tags:hasComment>
+    <tags:tagging rdf:resource="#luthien"/>
+    <tags:tagging rdf:resource="#glaurung"/>
+    <tags:tagging rdf:resource="#beren"/>
+    <tags:addedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >reedcourty</tags:addedBy>
+    <tags:addedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2013-10-13T17:32:54.764</tags:addedAt>
+    <tags:tagging rdf:resource="#melian"/>
+    <tags:tagging rdf:resource="#gloin"/>
+    <tags:tagging rdf:resource="#shelob"/>
+    <tags:tagging rdf:resource="#balrog"/>
+  </tags:Tag>
+  <tags:Tag rdf:ID="ImportantMetrics">
+    <tags:tagging>
+      <rdf:Description rdf:about="http://reedcourty.github.com/ontologies/virtualization#cpu.ready.summation">
+        <tags:taggedBy rdf:resource="#ImportantMetrics"/>
+      </rdf:Description>
+    </tags:tagging>
+    <tags:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Important Metrics</tags:hasName>
+    <tags:hasComment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This metrics is important</tags:hasComment>
+    <tags:addedBy rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >reedcourty</tags:addedBy>
+    <tags:addedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >2013-10-10T09:54:23</tags:addedAt>
+  </tags:Tag>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->
