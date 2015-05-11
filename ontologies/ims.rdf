@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns="http://reedcourty.github.com/ontologies/ims#" xml:base="http://reedcourty.github.com/ontologies/ims">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Created with reedcourty's xmind2ontology on 2015.05.01 17:08:12</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Charging">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="IMS_service"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Call_Session_Control_Function">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="IMS_component"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: CSCF</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Interrogating-CSCF">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Call_Session_Control_Function"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: I-CSCF</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Homer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Service_application"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">description: "Homer is a standard XML Document Management Server used to store MMTel service settings documents for each user of the system. Documents are created, read, updated and deleted using a standard XCAP interface. As with Homestead, the Homer nodes run as a cluster using Cassandra as the data store." - Clearwater Architecture (http://www.projectclearwater.org/technical/clearwater-architecture/)</rdfs:comment>
+    <inv_has_service_application>
+      <owl:Class rdf:ID="Clearwater"/>
+    </inv_has_service_application>
+    <provides>
+      <owl:Class rdf:ID="XDMS"/>
+    </provides>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="inv_has_service_application"/>
+  <owl:ObjectProperty rdf:ID="provides"/>
+  <owl:Class rdf:about="#IMS_component">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_has_ims_component>
+      <owl:Class rdf:ID="IP_Multimedia_Subsystem"/>
+    </inv_has_ims_component>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="inv_has_ims_component"/>
+  <owl:Class rdf:ID="SIP_registrar">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:ID="Sprout"/>
+    </inv_provides>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="inv_provides"/>
+  <owl:Class rdf:ID="Serving-CSCF">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Call_Session_Control_Function"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: S-CSCF</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="CTF">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:ID="Ralf"/>
+    </inv_provides>
+  </owl:Class>
+  <owl:Class rdf:about="#Service_application">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Sprout">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Service_application"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">description: "The Sprout nodes act as a horizontally scalable, combined SIP registrar and authoritative routing proxy, and handle client authentication and the ISC interface to application servers.  This is where the bulk of the I-CSCF and S-CSCF function resides (with the remainder in Homestead).&#13;
+&#13;
+The Sprout nodes also contain the optional, in-built MMTel application server.&#13;
+&#13;
+The Sprout cluster includes a redundant memcached cluster storing client registration data and other long-lived state. SIP transactions are load balanced across the Sprout cluster, so there is no long-lived association between a client and a particular Sprout node. Sprout uses Web services interfaces provided by Homestead and Homer to retrieve HSS configuration such as authentication data/user profiles, and MMTel service settings." - Clearwater Architecture (http://www.projectclearwater.org/technical/clearwater-architecture/)</rdfs:comment>
+    <inv_has_service_application>
+      <owl:Class rdf:about="#Clearwater"/>
+    </inv_has_service_application>
+    <provides>
+      <owl:Class rdf:ID="SIP_Router"/>
+    </provides>
+    <provides>
+      <owl:Class rdf:about="#SIP_registrar"/>
+    </provides>
+    <provides>
+      <owl:Class rdf:ID="authoritative_routing_proxy"/>
+    </provides>
+    <provides>
+      <owl:Class rdf:ID="in-built_MMTel_application_server"/>
+    </provides>
+  </owl:Class>
+  <owl:Class rdf:ID="Application_Server">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#IMS_component"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: AS</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Home_Subscriber_Server">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#IMS_component"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: HSS</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="P-CSCF">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:ID="Bono"/>
+    </inv_provides>
+  </owl:Class>
+  <owl:Class rdf:about="#Bono">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Service_application"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">description: "The Bono nodes form a horizontally scalable SIP edge proxy providing both a SIP IMS Gm compliant interface (P-CSCF) and a WebRTC interface to clients. Client connections are load balanced across the nodes. The Bono node provides the anchor point for the client’s connection to the Clearwater system, including support for various NAT traversal mechanisms. A client is therefore anchored to a particular Bono node for the duration of its registration, but can move to another Bono node if the connection or client fails.&#13;
+&#13;
+Clients can connect to Bono using SIP/UDP or SIP/TCP.  Bono supports any WebRTC client that performs call setup signaling using SIP over WebSocket.&#13;
+&#13;
+Alternatively, Clearwater can be deployed with a third party P-CSCF or Session Border Controller implementing P-CSCF. In this case Bono nodes are not required." - Clearwater Architecture (http://www.projectclearwater.org/technical/clearwater-architecture/)</rdfs:comment>
+    <inv_has_service_application>
+      <owl:Class rdf:about="#Clearwater"/>
+    </inv_has_service_application>
+    <provides>
+      <owl:Class rdf:ID="Edge_Proxy"/>
+    </provides>
+    <provides>
+      <owl:Class rdf:about="#P-CSCF"/>
+    </provides>
+    <provides>
+      <owl:Class rdf:ID="WebRTC"/>
+    </provides>
+  </owl:Class>
+  <owl:Class rdf:ID="Telecommunication_or_Telephony_Application_Server">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Application_Server"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: TAS</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Data_store">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Service"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:Class rdf:ID="All-in-One">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Installation_type"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Distributed">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Installation_type"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Installation_type">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_has_installation_type>
+      <owl:Class rdf:about="#Clearwater"/>
+    </inv_has_installation_type>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="inv_has_installation_type"/>
+  <owl:Class rdf:ID="Proxy-CSCF">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Call_Session_Control_Function"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: P-CSCF</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#IMS_service">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Service"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Edge_Proxy">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#IMS_component"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:about="#Bono"/>
+    </inv_provides>
+  </owl:Class>
+  <owl:Class rdf:ID="Web_Real-Time_Communication">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Service"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: WebRTC</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cassandra">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Data_store"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Rf_Charging_Trigger_Function">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Charging"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: CTF</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="XML_Document_Management_Server">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Service"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: XDMS</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Ralf">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Service_application"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">description: "Ralf provides Rf Charging Trigger Function, which is used in IMS to provide offline billing.  Bono and Sprout report P-CSCF and I-CSCF/S-CSCF chargeable events respectively to Ralf, which then reports these over Rf to an external Charging Data Function (CDF).&#13;
+&#13;
+As the other components, Ralf nodes run as a cluster, with session state stored in memcached.  (Storage of session state is required to conform to the Rf protocol.)&#13;
+&#13;
+When designing Ralf we couldn’t find any existing horizontally scalable, redundant, timer services which were suitable for generating the periodic messages the Rf specifications require, so we developed Chronos." - Clearwater Architecture (http://www.projectclearwater.org/technical/clearwater-architecture/)</rdfs:comment>
+    <inv_has_service_application>
+      <owl:Class rdf:about="#Clearwater"/>
+    </inv_has_service_application>
+    <provides>
+      <owl:Class rdf:about="#CTF"/>
+    </provides>
+  </owl:Class>
+  <owl:Class rdf:about="#Clearwater">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#IP_Multimedia_Subsystem"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <has_service_application>
+      <owl:Class rdf:about="#Bono"/>
+    </has_service_application>
+    <has_service_application>
+      <owl:Class rdf:about="#Sprout"/>
+    </has_service_application>
+    <has_service_application>
+      <owl:Class rdf:ID="Homestead"/>
+    </has_service_application>
+    <has_service_application>
+      <owl:Class rdf:about="#Ralf"/>
+    </has_service_application>
+    <has_service_application>
+      <owl:Class rdf:about="#Homer"/>
+    </has_service_application>
+    <has_service_application>
+      <owl:Class rdf:ID="Ellis"/>
+    </has_service_application>
+    <has_installation_type>
+      <owl:Class rdf:about="#Installation_type"/>
+    </has_installation_type>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="has_service_application"/>
+  <owl:ObjectProperty rdf:ID="has_installation_type"/>
+  <owl:Class rdf:ID="Charging_Data_Function">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Charging"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: CDF</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="HSS_Mirror">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:about="#Homestead"/>
+    </inv_provides>
+  </owl:Class>
+  <owl:Class rdf:about="#Homestead">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Service_application"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">description: "Homestead provides a Web services interface to Sprout for retrieving authentication credentials and user profile information. It can either master the data (in which case it exposes a Web services provisioning interface) or can pull the data from an IMS compliant HSS over the Cx interface. The Homestead nodes run as a cluster using Cassandra as the store for mastered/mirrored data.&#13;
+&#13;
+In the IMS architecture, the HSS mirror function is considered to be part of the I-CSCF and S-CSCF components, so in Clearwater I-CSCF and S-CSCF function is implemented with a combination of Sprout and Homestead (and Ralf if Rf billing is supported) clusters." - Clearwater Architecture (http://www.projectclearwater.org/technical/clearwater-architecture/)</rdfs:comment>
+    <inv_has_service_application>
+      <owl:Class rdf:about="#Clearwater"/>
+    </inv_has_service_application>
+    <provides>
+      <owl:Class rdf:about="#HSS_Mirror"/>
+    </provides>
+  </owl:Class>
+  <owl:Class rdf:about="#in-built_MMTel_application_server">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:about="#Sprout"/>
+    </inv_provides>
+  </owl:Class>
+  <owl:Class rdf:about="#SIP_Router">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:about="#Sprout"/>
+    </inv_provides>
+  </owl:Class>
+  <owl:Class rdf:about="#Service">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Ellis">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Service_application"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">description: "Ellis is a sample provisioning portal providing self sign-up, password management, line management and control of MMTel service settings. It is not intended to be a part of production Clearwater deployments (it is not easy to horizontally scale because of the MySQL underpinnings for one thing) but to make the system easy to use out of the box, when not using an external HSS." - Clearwater Architecture (http://www.projectclearwater.org/technical/clearwater-architecture/)</rdfs:comment>
+    <inv_has_service_application>
+      <owl:Class rdf:about="#Clearwater"/>
+    </inv_has_service_application>
+  </owl:Class>
+  <owl:Class rdf:about="#IP_Multimedia_Subsystem">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: IMS</rdfs:comment>
+    <has_ims_component>
+      <owl:Class rdf:about="#IMS_component"/>
+    </has_ims_component>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="has_ims_component"/>
+  <owl:Class rdf:about="#authoritative_routing_proxy">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:about="#Sprout"/>
+    </inv_provides>
+  </owl:Class>
+  <owl:Class rdf:about="#WebRTC">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:about="#Bono"/>
+    </inv_provides>
+  </owl:Class>
+  <owl:Class rdf:ID="Breakout_Gateway_Control_Function">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#IMS_component"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">acronym: BGCF</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#XDMS">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"/>
+    <inv_provides>
+      <owl:Class rdf:about="#Homer"/>
+    </inv_provides>
+  </owl:Class>
+</rdf:RDF>

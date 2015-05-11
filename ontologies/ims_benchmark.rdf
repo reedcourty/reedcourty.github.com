@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:sipp="http://reedcourty.github.com/ontologies/sipp#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:ims="http://reedcourty.github.com/ontologies/ims#"
+    xmlns:benchmark="http://reedcourty.github.com/ontologies/benchmark#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://reedcourty.github.com/ontologies/ims_benchmark#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://reedcourty.github.com/ontologies/ims_benchmark">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/benchmark"/>
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/ims"/>
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/sipp"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with reedcourty's xmind2ontology on 2015.05.01 17:08:12</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Protocol">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Description_field"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UDP">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Protocol"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Length">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Description_field"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Interference_description">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Description_field"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IMS_benchmark">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Benchmark"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IMS_benchmark_experiment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Experiment"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IMS_benchmark_campaign">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Campaign"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Calls">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Description_field"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Monitoring_frequency">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Description_field"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Clearwater_type">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Description_field"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Distributed">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Clearwater_type"/>
+  </owl:Class>
+  <owl:Class rdf:ID="All-in-One">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Clearwater_type"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TCP">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Protocol"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="has_campaign"/>
+  <owl:ObjectProperty rdf:ID="has_description_field"/>
+  <owl:ObjectProperty rdf:ID="inv_has_description_field"/>
+  <owl:ObjectProperty rdf:ID="has_campaign_name"/>
+  <owl:ObjectProperty rdf:ID="has_experiment"/>
+  <owl:ObjectProperty rdf:ID="inv_has_campaign_name"/>
+  <owl:ObjectProperty rdf:ID="inv_has_experiment"/>
+  <owl:ObjectProperty rdf:ID="inv_has_campaign"/>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

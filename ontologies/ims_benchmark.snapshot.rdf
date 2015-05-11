@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:sipp="http://reedcourty.github.com/ontologies/sipp#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:benchmark="http://reedcourty.github.com/ontologies/benchmark#"
+    xmlns="http://reedcourty.github.com/ontologies/ims_benchmark_snapshot#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:ims_benchmark="http://reedcourty.github.com/ontologies/ims_benchmark#"
+    xmlns:tags="http://reedcourty.github.com/ontologies/tags#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:virtualization="http://reedcourty.github.com/ontologies/virtualization#"
+  xml:base="http://reedcourty.github.com/ontologies/ims_benchmark_snapshot">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/measurement"/>
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/virtualization"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with TopBraid Composer</owl:versionInfo>
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/ims_benchmark"/>
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/tags"/>
+  </owl:Ontology>
+  <benchmark:Experiment_ID rdf:ID="clearwater_0011-multi-if"/>
+  <tags:DomainInfo rdf:about="http://reedcourty.github.com/ontologies/tags#HasInfluence">
+    <tags:tagging>
+      <benchmark:CPU_interference rdf:about="http://reedcourty.github.com/ontologies/benchmark#CPU_interference_1"/>
+    </tags:tagging>
+    <tags:tagging>
+      <benchmark:Memory_interference rdf:about="http://reedcourty.github.com/ontologies/benchmark#Memory_interference_1"/>
+    </tags:tagging>
+    <tags:tagging>
+      <tags:KeyAttribute rdf:about="http://reedcourty.github.com/ontologies/tags#QoS">
+        <tags:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >QoS</tags:hasName>
+        <tags:tagging>
+          <sipp:Response_time rdf:about="http://reedcourty.github.com/ontologies/sipp#Response_time_register"/>
+        </tags:tagging>
+        <tags:tagging>
+          <sipp:Response_time rdf:about="http://reedcourty.github.com/ontologies/sipp#Response_time_call-teardown"/>
+        </tags:tagging>
+        <tags:tagging>
+          <sipp:Response_time rdf:about="http://reedcourty.github.com/ontologies/sipp#Response_time_call-setup">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >{'metric': "Response_time_call-setup", 'mean': 6000, 'max_var': 500}</rdfs:comment>
+          </sipp:Response_time>
+        </tags:tagging>
+      </tags:KeyAttribute>
+    </tags:tagging>
+    <tags:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HasInfluence</tags:hasName>
+  </tags:DomainInfo>
+  <benchmark:Cachebench rdf:about="http://reedcourty.github.com/ontologies/benchmark#Cachebench_1">
+    <benchmark:generates rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Memory_interference_1"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CPU/cachebench.sh(-r -x0 -m28 -d5 -e24)</rdfs:comment>
+  </benchmark:Cachebench>
+  <ims_benchmark:IMS_benchmark rdf:about="http://reedcourty.github.com/ontologies/ims_benchmark#IMS_benchmark_1">
+    <benchmark:has_campaign>
+      <ims_benchmark:IMS_benchmark_campaign rdf:about="http://reedcourty.github.com/ontologies/ims_benchmark#IMS_benchmark_campaign_ESXi-BLADE">
+        <benchmark:has_experiment>
+          <ims_benchmark:IMS_benchmark_experiment rdf:about="http://reedcourty.github.com/ontologies/ims_benchmark#IMS_benchmark_experiment_2">
+            <benchmark:has_scenario>
+              <benchmark:Interference_scenario rdf:about="http://reedcourty.github.com/ontologies/benchmark#Interference_scenario_2">
+                <benchmark:consists_of rdf:resource="http://reedcourty.github.com/ontologies/benchmark#Memory_interference_1"/>
+              </benchmark:Interference_scenario>
+            </benchmark:has_scenario>
+            <benchmark:has_scenario>
+              <benchmark:Scenario rdf:about="http://reedcourty.github.com/ontologies/benchmark#Scenario_2"/>
+            </benchmark:has_scenario>
+            <benchmark:has_experiment_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >clearwater_0011-multi-if</benchmark:has_experiment_id>
+          </ims_benchmark:IMS_benchmark_experiment>
+        </benchmark:has_experiment>
+        <benchmark:has_experiment>
+          <ims_benchmark:IMS_benchmark_experiment rdf:about="http://reedcourty.github.com/ontologies/ims_benchmark#IMS_benchmark_experiment_1">
+            <benchmark:has_scenario>
+              <benchmark:Interference_scenario rdf:about="http://reedcourty.github.com/ontologies/benchmark#Interference_scenario_1">
+                <benchmark:consists_of rdf:resource="http://reedcourty.github.com/ontologies/benchmark#CPU_interference_1"/>
+              </benchmark:Interference_scenario>
+            </benchmark:has_scenario>
+            <benchmark:has_scenario>
+              <benchmark:Scenario rdf:about="http://reedcourty.github.com/ontologies/benchmark#Scenario_1"/>
+            </benchmark:has_scenario>
+            <benchmark:has_experiment_id rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >clearwater_0010-multi-if</benchmark:has_experiment_id>
+          </ims_benchmark:IMS_benchmark_experiment>
+        </benchmark:has_experiment>
+        <benchmark:has_campaign_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >ESXi-BLADE</benchmark:has_campaign_name>
+      </ims_benchmark:IMS_benchmark_campaign>
+    </benchmark:has_campaign>
+  </ims_benchmark:IMS_benchmark>
+  <benchmark:Campaign_name rdf:ID="ESXi-BLADE"/>
+  <benchmark:stress rdf:about="http://reedcourty.github.com/ontologies/benchmark#stress_1">
+    <benchmark:generates rdf:resource="http://reedcourty.github.com/ontologies/benchmark#CPU_interference_1"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CPU/stress-sq.sh(10)</rdfs:comment>
+  </benchmark:stress>
+  <benchmark:Experiment_ID rdf:ID="clearwater_0010-multi-if"/>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

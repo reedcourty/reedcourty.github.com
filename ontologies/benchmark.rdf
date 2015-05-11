@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://reedcourty.github.com/ontologies/benchmark#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://reedcourty.github.com/ontologies/benchmark">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with reedcourty's xmind2ontology on 2015.05.01 17:08:12</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="CPU_interference">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Interference"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <generated_by>
+      <owl:Class rdf:ID="stress"/>
+    </generated_by>
+  </owl:Class>
+  <owl:Class rdf:about="#Interference">
+    <inv_can_generate>
+      <owl:Class rdf:ID="Interference_generator"/>
+    </inv_can_generate>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Description_field">
+    <inv_has_description_field>
+      <owl:Class rdf:ID="Experiment"/>
+    </inv_has_description_field>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IO_interference">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Interference"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Interference_generator">
+    <can_generate rdf:resource="#Interference"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Tool"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Campaign">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <has_experiment>
+      <owl:Class rdf:about="#Experiment"/>
+    </has_experiment>
+    <inv_has_campaign>
+      <owl:Class rdf:ID="Benchmark"/>
+    </inv_has_campaign>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Benchmark">
+    <runs_with>
+      <owl:Class rdf:about="#Tool"/>
+    </runs_with>
+    <has_campaign rdf:resource="#Campaign"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Experiment_description_file">
+    <inv_has_experiment_description_file>
+      <owl:Class rdf:about="#Experiment"/>
+    </inv_has_experiment_description_file>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Memory_interference">
+    <rdfs:subClassOf rdf:resource="#Interference"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <generated_by>
+      <owl:Class rdf:ID="Cachebench"/>
+    </generated_by>
+  </owl:Class>
+  <owl:Class rdf:about="#Tool">
+    <inv_runs_with rdf:resource="#Benchmark"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Cachebench">
+    <generates rdf:resource="#Memory_interference"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Interference_generator"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Interference_scenario">
+    <consists_of>
+      <owl:Class rdf:ID="Step"/>
+    </consists_of>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Scenario"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Experiment">
+    <has_scenario>
+      <owl:Class rdf:about="#Scenario"/>
+    </has_scenario>
+    <has_experiment_description_file rdf:resource="#Experiment_description_file"/>
+    <has_description_field rdf:resource="#Description_field"/>
+    <inv_has_experiment rdf:resource="#Campaign"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#stress">
+    <generates rdf:resource="#CPU_interference"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Interference_generator"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Scenario">
+    <consists_of>
+      <owl:Class rdf:about="#Step"/>
+    </consists_of>
+    <inv_has_scenario rdf:resource="#Experiment"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Step">
+    <inv_has_next rdf:resource="#Step"/>
+    <has_next rdf:resource="#Step"/>
+    <inv_has_previous rdf:resource="#Step"/>
+    <has_previous rdf:resource="#Step"/>
+    <inv_consists_of rdf:resource="#Scenario"/>
+    <inv_consists_of rdf:resource="#Interference_scenario"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="runs_with"/>
+  <owl:ObjectProperty rdf:ID="has_previous"/>
+  <owl:ObjectProperty rdf:ID="inv_has_campaign"/>
+  <owl:ObjectProperty rdf:ID="has_experiment">
+    <rdfs:range rdf:resource="#Experiment"/>
+    <rdfs:domain rdf:resource="#Campaign"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="generates">
+    <rdfs:domain rdf:resource="#Interference_generator"/>
+    <rdfs:range rdf:resource="#Interference"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="generated_by"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inv_has_next"/>
+  <owl:ObjectProperty rdf:ID="has_experiment_description_file">
+    <rdfs:range rdf:resource="#Experiment_description_file"/>
+    <rdfs:domain rdf:resource="#Experiment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_scenario">
+    <rdfs:range rdf:resource="#Scenario"/>
+    <rdfs:domain rdf:resource="#Experiment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inv_has_previous"/>
+  <owl:ObjectProperty rdf:ID="inv_has_experiment_description_file"/>
+  <owl:ObjectProperty rdf:ID="can_generate">
+    <rdfs:range rdf:resource="#Interference"/>
+    <rdfs:domain rdf:resource="#Interference_generator"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inv_has_campaign_name"/>
+  <owl:ObjectProperty rdf:ID="inv_can_generate"/>
+  <owl:ObjectProperty rdf:ID="inv_has_description_field"/>
+  <owl:ObjectProperty rdf:ID="has_description_field">
+    <rdfs:range rdf:resource="#Description_field"/>
+    <rdfs:domain rdf:resource="#Experiment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#generated_by">
+    <rdfs:domain rdf:resource="#Interference"/>
+    <rdfs:range rdf:resource="#Interference_generator"/>
+    <owl:inverseOf rdf:resource="#generates"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_next"/>
+  <owl:ObjectProperty rdf:ID="inv_has_scenario"/>
+  <owl:ObjectProperty rdf:ID="inv_consists_of"/>
+  <owl:ObjectProperty rdf:ID="has_campaign_name">
+    <rdfs:domain rdf:resource="#Campaign"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_campaign"/>
+  <owl:ObjectProperty rdf:ID="consists_of">
+    <rdfs:range rdf:resource="#Step"/>
+    <rdfs:domain rdf:resource="#Scenario"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inv_runs_with"/>
+  <owl:ObjectProperty rdf:ID="inv_has_experiment_id"/>
+  <owl:ObjectProperty rdf:ID="has_experiment_id">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Experiment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inv_has_experiment"/>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

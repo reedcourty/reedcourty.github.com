@@ -1,0 +1,800 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://reedcourty.github.com/ontologies/sipp#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:measurement="http://reedcourty.github.com/ontologies/measurement#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://reedcourty.github.com/ontologies/sipp">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created with reedcourty's xmind2ontology on 2015.05.01 17:08:12</owl:versionInfo>
+    <owl:imports rdf:resource="http://reedcourty.github.com/ontologies/measurement"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="start_rtd">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Command_attribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TCP_multi_socket">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TCP"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Receive">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SIPp_scenario_command"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:ID="SIPp_parameter">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <inv_has_sipp_parameter>
+      <owl:Class rdf:ID="SIPp_running"/>
+    </inv_has_sipp_parameter>
+  </owl:Class>
+  <owl:Class rdf:ID="Periodic_failed_call">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FailedCall"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SIPp_scenario_command">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Step"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Pause">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:ID="timeout">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Nop">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:ID="User">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:ID="response_txn">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Periodic_elapsed_time">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ElapsedTime"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="cdata">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: &lt;![CDATA[]]&gt;</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#TCP">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Transport_mode"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="End_time">
+    <rdfs:subClassOf rdf:resource="#SIPp_parameter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TCP_mono_socket">
+    <rdfs:subClassOf rdf:resource="#TCP"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Step">
+    <inv_consists_of>
+      <owl:Class rdf:ID="SIPp_scenario"/>
+    </inv_consists_of>
+    <has_previous rdf:resource="#Step"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has_next rdf:resource="#Step"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedMaxUDPRetrans">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because the maximum number of UDP retransmission attempts has been reached.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="CurrentTime">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Date and time of the statistic row.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="lost">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cumulated_failed_call">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FailedCall"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="variables">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="milliseconds">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cumulated_incoming_call">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="IncomingCall"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="optional">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SuccessfulCall">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of successful calls.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="dest">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedCmdNotSent">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because of inter-Sipp communication error (a scenario sync command failed to be sent).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cumulated_elapsed_time">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ElapsedTime"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#IncomingCall">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of incoming calls.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="LastResetTime">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Date and time when periodic counters where last reseted.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="auth">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TotalCallCreated">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of calls created.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="sanity_check">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cumulated_outgoing_call">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="OutgoingCall"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedCallRejected">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because of Sipp internal error. (a scenario sync command is not recognized or a scenario action failed or a scenario variable assignment failed).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="variable">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="OutOfCallMsgs">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of SIP messages received that cannot be associated with an existing call.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="start_txn">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#OutgoingCall">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of outgoing calls.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Response_time">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >acronym: RTT</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Statistic"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ElapsedTime">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Elapsed time.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cumulated_call_rate">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CallRate"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Received_message">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Message"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Periodic_failed_cannot_send_message">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FailedCannotSendMessage"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedTimeoutOnRecv">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because of a recv timeout statement.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="id">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TCP_reconnections">
+    <rdfs:subClassOf rdf:resource="#TCP"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedUnexpectedMessage">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because the SIP message received is not expected in the scenario.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cumulated_failed_cannot_send_message">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FailedCannotSendMessage"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#FailedCannotSendMessage">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because Sipp cannot send the message (transport issue).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SIPp_scenario">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Scenario"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <inv_has_sipp_scenario>
+      <owl:Class rdf:about="#SIPp_running"/>
+    </inv_has_sipp_scenario>
+    <consists_of rdf:resource="#Step"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CurrentCall">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of calls currently ongoing.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Retransmissions">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Counter"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of SIP messages being retransmitted.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Run-time">
+    <rdfs:subClassOf rdf:resource="#SIPp_parameter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Periodic_outgoing_call">
+    <rdfs:subClassOf rdf:resource="#OutgoingCall"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Users">
+    <rdfs:subClassOf rdf:resource="#SIPp_parameter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: "Instead of starting calls at a fixed rate, begin 'users' calls at startup, and keep the number of calls constant." - http://sipp.sourceforge.net/doc/reference.html#Online+help+%28-h%29</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SCTP_mono_socket">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SCTP"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Response_Time_Repartition">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:about="#Counter">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Statistic"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AutoAnswered">
+    <rdfs:subClassOf rdf:resource="#Counter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of unexpected specific messages received for new Call-ID. The message has been automatically answered by a 200 OK Currently, implemented for 'PING' message only.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="regexp_match">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SCTP_multi_socket">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SCTP"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedTimeoutOnSend">
+    <rdfs:subClassOf rdf:resource="#Counter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because of a send timeout statement.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Cumulated_successful_call">
+    <rdfs:subClassOf rdf:resource="#SuccessfulCall"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TLS">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Transport_mode"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Reference">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:ID="ontimeout">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SCTP">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Transport_mode"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedRegexpHdrNotFound">
+    <rdfs:subClassOf rdf:resource="#Counter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because of regexp with hdr option but no matching header found.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ack_txn">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Receive_command">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:ID="UDP_with_one_socket_per_IP_address">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="UDP"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Start_time">
+    <rdfs:subClassOf rdf:resource="#SIPp_parameter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#UDP">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Transport_mode"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="request">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Periodic_successful_call">
+    <rdfs:subClassOf rdf:resource="#SuccessfulCall"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Send">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedRegexpShouldntMatch">
+    <rdfs:subClassOf rdf:resource="#Counter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because of regexp that shouldn't match (there might be several regexp that shouldn't match during the call but the counter is increased only by one).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Periodic_incoming_call">
+    <rdfs:subClassOf rdf:resource="#IncomingCall"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Globals">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:ID="rss">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StartTime">
+    <rdfs:subClassOf rdf:resource="#Counter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Date and time when the test has started.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SIPp_running">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <inv_runs>
+      <owl:Class rdf:ID="SIPp"/>
+    </inv_runs>
+    <has_sipp_parameter rdf:resource="#SIPp_parameter"/>
+    <has_sipp_scenario rdf:resource="#SIPp_scenario"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Statistic">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <inv_generate>
+      <owl:Class rdf:about="#SIPp"/>
+    </inv_generate>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/measurement#Metrics"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Message">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Sent_message">
+    <rdfs:subClassOf rdf:resource="#Message"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CallRate">
+    <rdfs:subClassOf rdf:resource="#Counter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Call rate (calls per seconds).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TLS_mono_socket">
+    <rdfs:subClassOf rdf:resource="#TLS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="UDP_mono_socket">
+    <rdfs:subClassOf rdf:resource="#UDP"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedRegexpDoesntMatch">
+    <rdfs:subClassOf rdf:resource="#Counter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls because of regexp that doesn't match (there might be several regexp that don't match during the call but the counter is increased only by one).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Send_command">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:ID="FailedOutboundCongestion">
+    <rdfs:subClassOf rdf:resource="#Counter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed outgoing calls because of TCP congestion.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="src">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="UDP_multi_socket">
+    <rdfs:subClassOf rdf:resource="#UDP"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TLS_multi_socket">
+    <rdfs:subClassOf rdf:resource="#TLS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Scenario">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Call_Length_Repartition">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:about="#FailedCall">
+    <rdfs:subClassOf rdf:resource="#Counter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: Number of failed calls (all reasons).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="response">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="value">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Transport_mode">
+    <rdfs:subClassOf rdf:resource="#SIPp_parameter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="action">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Label">
+    <rdfs:subClassOf rdf:resource="#SIPp_scenario_command"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <has>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </has>
+  </owl:Class>
+  <owl:Class rdf:ID="retrans">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Command_attribute"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Periodic_call_rate">
+    <rdfs:subClassOf rdf:resource="#CallRate"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Command_attribute">
+    <inv_has rdf:resource="#Call_Length_Repartition"/>
+    <inv_has rdf:resource="#Reference"/>
+    <inv_has rdf:resource="#Receive_command"/>
+    <inv_has rdf:resource="#Send_command"/>
+    <inv_has rdf:resource="#Response_Time_Repartition"/>
+    <inv_has rdf:resource="#Globals"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+    <inv_has rdf:resource="#Label"/>
+    <inv_has rdf:resource="#Pause"/>
+    <inv_has rdf:resource="#Nop"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <inv_has rdf:resource="#User"/>
+    <inv_has rdf:resource="#Receive"/>
+  </owl:Class>
+  <owl:Class rdf:ID="distribution">
+    <rdfs:subClassOf rdf:resource="#Command_attribute"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SIPp">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description: "SIPp is a performance testing tool for the SIP protocol." - SIPp reference documentation (http://sipp.sourceforge.net/doc/reference.html#Foreword)</rdfs:comment>
+    <generate rdf:resource="#Statistic"/>
+    <runs rdf:resource="#SIPp_running"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="has_start_rtd">
+    <rdfs:range rdf:resource="#start_rtd"/>
+    <rdfs:domain rdf:resource="#SIPp_scenario_command"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has"/>
+  <owl:ObjectProperty rdf:ID="has_sipp_scenario">
+    <rdfs:range rdf:resource="#SIPp_scenario"/>
+    <rdfs:domain rdf:resource="#SIPp_running"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inv_has_sipp_parameter"/>
+  <owl:ObjectProperty rdf:ID="inv_consists_of"/>
+  <owl:ObjectProperty rdf:ID="has_previous">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="has_next"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#Step"/>
+    <rdfs:domain rdf:resource="#Step"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inv_has"/>
+  <owl:ObjectProperty rdf:ID="inv_generate"/>
+  <owl:ObjectProperty rdf:ID="inv_has_sipp_scenario"/>
+  <owl:ObjectProperty rdf:ID="consists_of">
+    <rdfs:range rdf:resource="#Step"/>
+    <rdfs:domain rdf:resource="#SIPp_scenario"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inv_runs"/>
+  <owl:ObjectProperty rdf:ID="has_sipp_parameter">
+    <rdfs:range rdf:resource="#SIPp_parameter"/>
+    <rdfs:domain rdf:resource="#SIPp_running"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="generate">
+    <rdfs:range rdf:resource="#Statistic"/>
+    <rdfs:domain rdf:resource="#SIPp"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#has_next">
+    <owl:inverseOf rdf:resource="#has_previous"/>
+    <rdfs:range rdf:resource="#Step"/>
+    <rdfs:domain rdf:resource="#Step"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="command_attribute_start_rtd_of">
+    <rdfs:domain rdf:resource="#start_rtd"/>
+    <rdfs:range rdf:resource="#SIPp_scenario_command"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="runs">
+    <rdfs:range rdf:resource="#SIPp_running"/>
+    <rdfs:domain rdf:resource="#SIPp"/>
+  </owl:ObjectProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid -->

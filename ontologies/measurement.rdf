@@ -42,6 +42,7 @@
   </owl:ObjectProperty>
   <rdf:Property rdf:ID="hasUnit">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Metrics"/>
   </rdf:Property>
   <owl:DatatypeProperty rdf:ID="metricsName">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>

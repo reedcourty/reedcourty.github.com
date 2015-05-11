@@ -13,24 +13,21 @@
     <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Created with TopBraid Composer</owl:versionInfo>
   </owl:Ontology>
-  <owl:Class rdf:ID="mem.consumed.average">
-    <measurement:metricsOf>
-      <owl:Class rdf:ID="Machine"/>
-    </measurement:metricsOf>
-    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/measurement#Metrics"/>
-    <measurement:metricsName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >mem.consumed.average</measurement:metricsName>
+  <owl:Class rdf:ID="mem.usage.average">
     <measurement:metricsOf>
       <owl:Class rdf:ID="Memory"/>
     </measurement:metricsOf>
+    <measurement:metricsName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mem.usage.average</measurement:metricsName>
     <measurement:hasUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >MB</measurement:hasUnit>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/measurement#Metrics"/>
   </owl:Class>
   <owl:Class rdf:ID="Host">
     <isVirtual rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
     >false</isVirtual>
     <rdfs:subClassOf>
-      <owl:Class rdf:about="#Machine"/>
+      <owl:Class rdf:ID="Machine"/>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="#Machine">
@@ -67,20 +64,6 @@
     >true</isVirtual>
     <rdfs:subClassOf rdf:resource="#Machine"/>
   </owl:Class>
-  <owl:Class rdf:about="#Disk">
-    <owl:disjointWith>
-      <owl:Class rdf:about="#Processor"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="#Memory"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="#NetworkInterfaceCard"/>
-    </owl:disjointWith>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Hardware"/>
-    </rdfs:subClassOf>
-  </owl:Class>
   <owl:Class rdf:about="#sys.uptime.latest">
     <measurement:hasUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >second</measurement:hasUnit>
@@ -89,34 +72,50 @@
     >sys.uptime.latest</measurement:metricsName>
     <measurement:metricsOf rdf:resource="#Machine"/>
   </owl:Class>
-  <owl:Class rdf:about="#Hardware">
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <owl:Class rdf:ID="disk.totallatency.average">
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/measurement#Metrics"/>
+    <measurement:metricsName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >disk.totallatency.average</measurement:metricsName>
+    <measurement:metricsOf rdf:resource="#Host"/>
+    <measurement:metricsOf>
+      <owl:Class rdf:about="#Disk"/>
+    </measurement:metricsOf>
   </owl:Class>
   <owl:Class rdf:about="#Memory">
     <owl:disjointWith>
       <owl:Class rdf:about="#Processor"/>
     </owl:disjointWith>
-    <rdfs:subClassOf rdf:resource="#Hardware"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Hardware"/>
+    </rdfs:subClassOf>
     <owl:disjointWith>
       <owl:Class rdf:about="#NetworkInterfaceCard"/>
     </owl:disjointWith>
-    <owl:disjointWith rdf:resource="#Disk"/>
-  </owl:Class>
-  <owl:Class rdf:about="#NetworkInterfaceCard">
     <owl:disjointWith>
-      <owl:Class rdf:about="#Processor"/>
+      <owl:Class rdf:about="#Disk"/>
     </owl:disjointWith>
-    <owl:disjointWith rdf:resource="#Disk"/>
-    <rdfs:subClassOf rdf:resource="#Hardware"/>
-    <owl:disjointWith rdf:resource="#Memory"/>
   </owl:Class>
-  <owl:Class rdf:ID="cpu.ready.summation">
+  <owl:Class rdf:about="#Processor">
+    <measurement:hasMetrics>
+      <owl:Class rdf:ID="cpu.ready.summation"/>
+    </measurement:hasMetrics>
+    <owl:disjointWith rdf:resource="#Memory"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Disk"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Hardware"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NetworkInterfaceCard"/>
+    </owl:disjointWith>
+    <measurement:hasMetrics rdf:resource="#cpu.usage.average"/>
+  </owl:Class>
+  <owl:Class rdf:about="#cpu.ready.summation">
     <measurement:hasUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >millisecond</measurement:hasUnit>
     <measurement:metricsOf rdf:resource="#Guest"/>
-    <measurement:metricsOf>
-      <owl:Class rdf:about="#Processor"/>
-    </measurement:metricsOf>
+    <measurement:metricsOf rdf:resource="#Processor"/>
     <measurement:hasMinValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
     >0</measurement:hasMinValue>
     <measurement:hasMaxValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
@@ -125,13 +124,50 @@
     >cpu.ready.summation</measurement:metricsName>
     <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/measurement#Metrics"/>
   </owl:Class>
-  <owl:Class rdf:about="#Processor">
-    <measurement:hasMetrics rdf:resource="#cpu.ready.summation"/>
+  <owl:Class rdf:ID="mem.consumed.average">
+    <measurement:metricsOf rdf:resource="#Machine"/>
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/measurement#Metrics"/>
+    <measurement:metricsName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mem.consumed.average</measurement:metricsName>
+    <measurement:metricsOf rdf:resource="#Memory"/>
+    <measurement:hasUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MB</measurement:hasUnit>
+  </owl:Class>
+  <owl:Class rdf:ID="virtualdisk.totalreadlatency.average">
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/measurement#Metrics"/>
+    <measurement:metricsName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >virtualdisk.totalreadlatency.average</measurement:metricsName>
+    <measurement:metricsOf rdf:resource="#Guest"/>
+    <measurement:metricsOf>
+      <owl:Class rdf:about="#Disk"/>
+    </measurement:metricsOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Disk">
+    <owl:disjointWith rdf:resource="#Processor"/>
     <owl:disjointWith rdf:resource="#Memory"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#NetworkInterfaceCard"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Hardware"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="net.received.average">
+    <rdfs:subClassOf rdf:resource="http://reedcourty.github.com/ontologies/measurement#Metrics"/>
+    <measurement:metricsName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >net.received.average</measurement:metricsName>
+    <measurement:metricsOf>
+      <owl:Class rdf:about="#NetworkInterfaceCard"/>
+    </measurement:metricsOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Hardware">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:about="#NetworkInterfaceCard">
+    <owl:disjointWith rdf:resource="#Processor"/>
     <owl:disjointWith rdf:resource="#Disk"/>
     <rdfs:subClassOf rdf:resource="#Hardware"/>
-    <owl:disjointWith rdf:resource="#NetworkInterfaceCard"/>
-    <measurement:hasMetrics rdf:resource="#cpu.usage.average"/>
+    <owl:disjointWith rdf:resource="#Memory"/>
   </owl:Class>
   <owl:DatatypeProperty rdf:ID="name">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
